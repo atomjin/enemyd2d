@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=3 uid="uid://bl62em4pmy2u7"]
+
+[ext_resource type="PackedScene" uid="uid://s84yp5mo3kh5" path="res://scene/player.tscn" id="1_sa8jd"]
+[ext_resource type="PackedScene" uid="uid://bnxi85wldpmrs" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Wall_With_Door_Blue.glb" id="2_m6t2d"]
+[ext_resource type="PackedScene" uid="uid://c80aygv7ldv3n" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Wall_With_Door_Grey.glb" id="3_jm0pr"]
+[ext_resource type="PackedScene" uid="uid://7h31nfdqpsgu" path="res://asset/Item/FixItem/gift_box.tscn" id="4_aw6ny"]
+[ext_resource type="PackedScene" uid="uid://c8etc4f6pq8v" path="res://asset/Item/FixItem/helmet.tscn" id="5_s8w88"]
+[ext_resource type="PackedScene" uid="uid://dar3g61mnnluv" path="res://asset/Item/FixItem/bomb.tscn" id="6_ljaby"]
+[ext_resource type="PackedScene" uid="uid://q6c5vbgsln85" path="res://asset/LowPoly_Pixel_RPG_Assets_devilsworkshop_v02/3D/FBX/crown.fbx" id="7_cnd6o"]
+[ext_resource type="PackedScene" uid="uid://b7x8i0khwn3ud" path="res://scene/scab.tscn" id="8_uxx30"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mv1r"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uxb11"]
+sky_material = SubResource("ProceduralSkyMaterial_2mv1r")
+
+[sub_resource type="Environment" id="Environment_vvy1w"]
+background_mode = 2
+sky = SubResource("Sky_uxb11")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfqa6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_caryk"]
+transparency = 1
+albedo_color = Color(0.48, 0.878667, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sp25j"]
+material = SubResource("StandardMaterial3D_caryk")
+size = Vector3(17, 11, 17)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ydrtq"]
+agent_max_slope = 60.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7po2p"]
+albedo_color = Color(0.44, 0.44, 0.44, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfy6"]
+albedo_color = Color(1, 0.47, 0.47, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx2hy"]
+albedo_color = Color(0.33, 0.15026, 0.0792, 1)
+
+[node name="Test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vvy1w")
+
+[node name="player" parent="." instance=ExtResource("1_sa8jd")]
+
+[node name="water2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4505, -5.39978, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water2"]
+transform = Transform3D(16, 0, 0, 0, 10, 0, 0, 0, 16, 0, 0, 0)
+shape = SubResource("BoxShape3D_bfqa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="water2"]
+mesh = SubResource("BoxMesh_sp25j")
+skeleton = NodePath("../../water2")
+
+[node name="water" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.643, -7.73949, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water"]
+transform = Transform3D(16, 0, 0, 0, 10, 0, 0, 0, 16, 0, 0, 0)
+shape = SubResource("BoxShape3D_bfqa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="water"]
+mesh = SubResource("BoxMesh_sp25j")
+
+[node name="SciFi Assets" parent="." instance=ExtResource("2_m6t2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9794, -1.93554, 15.1546)
+
+[node name="SciFi Assets2" parent="." instance=ExtResource("3_jm0pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81868, -1.93554, 15.3114)
+
+[node name="GiftBox2" parent="." instance=ExtResource("4_aw6ny")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 3.52258, -0.352385, -1)
+
+[node name="GiftBox3" parent="." instance=ExtResource("4_aw6ny")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0.984534, -0.352385, -1)
+
+[node name="GiftBox4" parent="." instance=ExtResource("4_aw6ny")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, -1.43332, -0.352385, -1)
+
+[node name="Helm" parent="." instance=ExtResource("5_s8w88")]
+transform = Transform3D(0.5, 0, 0, 0, 0.499959, -0.00637028, 0, 0.00637028, 0.499959, 0, 0.268154, 4.59471)
+
+[node name="Bomb" parent="." instance=ExtResource("6_ljaby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.591604, -1.4953, -3.23238)
+
+[node name="crown" parent="." instance=ExtResource("7_cnd6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0042, -1.93509, -13.092)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ydrtq")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6187, -6.48512, 0.157374)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(10.9851, 0, 0, 0, 1, 0, 0, 0, 7.6363, -14.6189, -1.44997, -0.157035)
+material_override = SubResource("StandardMaterial3D_7po2p")
+use_collision = true
+size = Vector3(4.915, 12, 4.58)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -20.8745, 4.84724, -0.157374)
+use_collision = true
+size = Vector3(7.315, 1, 4.95)
+material = SubResource("StandardMaterial3D_ixfy6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+operation = 2
+use_collision = true
+size = Vector3(16, 10, 16)
+material = SubResource("StandardMaterial3D_sx2hy")
+
+[node name="scab" parent="." instance=ExtResource("8_uxx30")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.165378, -1.93509, 2.11521)

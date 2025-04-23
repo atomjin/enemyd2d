@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl62em4pmy2u7"]
+
+[ext_resource type="PackedScene" uid="uid://s84yp5mo3kh5" path="res://player.tscn" id="1_sa8jd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mv1r"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uxb11"]
+sky_material = SubResource("ProceduralSkyMaterial_2mv1r")
+
+[sub_resource type="Environment" id="Environment_vvy1w"]
+background_mode = 2
+sky = SubResource("Sky_uxb11")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7po2p"]
+albedo_color = Color(0.44, 0.44, 0.44, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixfy6"]
+albedo_color = Color(1, 0.47, 0.47, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx2hy"]
+albedo_color = Color(0.33, 0.15026, 0.0792, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfqa6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_do7ui"]
+transparency = 1
+albedo_color = Color(0.48, 0.878667, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sp25j"]
+material = SubResource("StandardMaterial3D_do7ui")
+size = Vector3(17, 11, 17)
+
+[node name="Test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vvy1w")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6187, -6.48512, 0.157374)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(10.9851, 0, 0, 0, 1, 0, 0, 0, 7.6363, -14.6187, -1.45042, -0.157374)
+material_override = SubResource("StandardMaterial3D_7po2p")
+use_collision = true
+size = Vector3(4.915, 12, 4.58)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -20.8745, 4.84724, -0.157374)
+use_collision = true
+size = Vector3(7.315, 1, 4.95)
+material = SubResource("StandardMaterial3D_ixfy6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+operation = 2
+use_collision = true
+size = Vector3(16, 10, 16)
+material = SubResource("StandardMaterial3D_sx2hy")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_sa8jd")]
+
+[node name="water" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.643, -7.73949, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water"]
+transform = Transform3D(16, 0, 0, 0, 10, 0, 0, 0, 16, 0, 0, 0)
+shape = SubResource("BoxShape3D_bfqa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="water"]
+mesh = SubResource("BoxMesh_sp25j")
+
+[node name="water" type="Area3D" parent="water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0935, 2.33971, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water/water"]
+transform = Transform3D(16, 0, 0, 0, 10, 0, 0, 0, 16, 0, 0, 0)
+shape = SubResource("BoxShape3D_bfqa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="water/water"]
+mesh = SubResource("BoxMesh_sp25j")

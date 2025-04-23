@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl4jv5me0cghw"]
+
+[ext_resource type="Script" path="res://script/ReadDonate.gd" id="1_4asm1"]
+[ext_resource type="Script" path="res://script/ReadQueue.gd" id="2_3aiie"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_15ukc"]
+font_size = 31
+
+[node name="donation_system" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="donation_read" type="Node" parent="."]
+script = ExtResource("1_4asm1")
+
+[node name="DonateTimer" type="Timer" parent="donation_read"]
+process_callback = 0
+
+[node name="queue_read" type="Node" parent="."]
+script = ExtResource("2_3aiie")
+
+[node name="QueueTimer" type="Timer" parent="queue_read"]
+process_callback = 0
+
+[node name="dono_value" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 90.0
+offset_right = 126.0
+offset_bottom = 141.0
+grow_horizontal = 2
+text = "Donation Value"
+label_settings = SubResource("LabelSettings_15ukc")
+
+[node name="dono_name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.0
+offset_top = 48.0
+offset_right = 141.0
+offset_bottom = 101.0
+grow_horizontal = 2
+text = "Donation Name"
+label_settings = SubResource("LabelSettings_15ukc")
+
+[connection signal="timeout" from="donation_read/DonateTimer" to="donation_read" method="_on_donate_timer_timeout"]
+[connection signal="timeout" from="queue_read/QueueTimer" to="queue_read" method="_on_queue_timer_timeout"]

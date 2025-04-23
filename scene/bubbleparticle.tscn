@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://1s844f5rf0mq"]
+
+[ext_resource type="Shader" path="res://shader/bubbleparticle.gdshader" id="1_rjmbj"]
+
+[sub_resource type="Curve" id="Curve_a8lls"]
+_data = [Vector2(0, 0.227637), 0.0, 0.0, 0, 0, Vector2(0.900332, 0.739653), 0.0, 0.0, 0, 0, Vector2(0.990033, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pn4b2"]
+curve = SubResource("Curve_a8lls")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ph1r"]
+velocity_pivot = Vector3(0, 2, 0)
+spread = 110.854
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 2, 0)
+scale_min = 0.5
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_pn4b2")
+turbulence_noise_strength = 2.0
+turbulence_noise_scale = 6.0
+turbulence_noise_speed = Vector3(0, 1, 0)
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 0.100001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqrxd"]
+render_priority = 0
+shader = ExtResource("1_rjmbj")
+shader_parameter/bubble_color = Vector3(0.7, 0.9, 1)
+shader_parameter/fresnel_power = 4.0
+shader_parameter/refraction_strength = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_f2w0a"]
+material = SubResource("ShaderMaterial_dqrxd")
+radius = 0.2
+height = 0.4
+
+[node name="OxygenParticle" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 0.3
+process_material = SubResource("ParticleProcessMaterial_5ph1r")
+draw_pass_1 = SubResource("SphereMesh_f2w0a")

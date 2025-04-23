@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7iuplaobrl3r"]
+
+[ext_resource type="Texture2D" uid="uid://c5ll1wlwtqguo" path="res://asset/CursedMarking.png" id="1_ggwkk"]
+
+[node name="CursedMarking" type="Decal"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.309252, 0.548113, 0)
+layers = 512
+texture_albedo = ExtResource("1_ggwkk")

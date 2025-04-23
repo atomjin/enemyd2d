@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://df0toywf0ckyu"
+valid=false
+
+[deps]
+
+source_file="res://donation_queue.csv"
+
+[params]
+
+compress=true
+delimiter=0

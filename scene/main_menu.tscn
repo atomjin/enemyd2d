@@ -1,0 +1,464 @@
+[gd_scene load_steps=32 format=3 uid="uid://csfhki7pgkkn"]
+
+[ext_resource type="FontFile" uid="uid://bgn3kifoj7xyq" path="res://font/HelpMe.ttf" id="1_naqun"]
+[ext_resource type="Script" path="res://script/main_menu.gd" id="1_qvijo"]
+[ext_resource type="PackedScene" uid="uid://3mhrmjhadedt" path="res://scene/gabriel.tscn" id="2_f5ub3"]
+[ext_resource type="PackedScene" uid="uid://bd5267w2q86ic" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Wall_Grey_2nd_Floor.glb" id="3_ubiml"]
+[ext_resource type="PackedScene" uid="uid://d07wiv60fys47" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Wall_Grey.glb" id="4_h1sqy"]
+[ext_resource type="PackedScene" uid="uid://bs0bsldckkad" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Tile_Metal.glb" id="4_nxkqj"]
+[ext_resource type="PackedScene" uid="uid://m13iiqfh46u8" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Mid_Path_Corner_2.glb" id="5_5eylw"]
+[ext_resource type="PackedScene" uid="uid://buh0583j28jvq" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Mid_Path.glb" id="6_yaayd"]
+[ext_resource type="PackedScene" uid="uid://d1lmphj8q76mq" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/BioMonitor_Blue.glb" id="7_q05di"]
+[ext_resource type="PackedScene" uid="uid://cfb1gy1tsnxs3" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Metal_Square.glb" id="8_tof8h"]
+[ext_resource type="PackedScene" uid="uid://cx4bwiiahxjrd" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Metal_Square_Grate.glb" id="9_0qdlu"]
+[ext_resource type="PackedScene" uid="uid://b3ftq7q830uot" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Metal_Circles.glb" id="12_ppf6g"]
+[ext_resource type="Script" path="res://script/light_flicker.gd" id="12_scjkx"]
+[ext_resource type="Shader" path="res://shader/horror.gdshader" id="13_iot8x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5qm2n"]
+sky_top_color = Color(0.261415, 0.245665, 0.268988, 1)
+sky_horizon_color = Color(0.140096, 0.144502, 0.151457, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_sikt1"]
+sky_material = SubResource("ProceduralSkyMaterial_5qm2n")
+
+[sub_resource type="Environment" id="Environment_e1868"]
+background_mode = 2
+sky = SubResource("Sky_sikt1")
+tonemap_mode = 3
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eokqy"]
+albedo_color = Color(0.36, 0.36, 0.36, 1)
+
+[sub_resource type="Gradient" id="Gradient_xkikq"]
+offsets = PackedFloat32Array(0.378549, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hyc4p"]
+noise_type = 2
+frequency = 0.1976
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_nsl8g"]
+color_ramp = SubResource("Gradient_xkikq")
+noise = SubResource("FastNoiseLite_hyc4p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gy1gx"]
+shader = ExtResource("13_iot8x")
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 1.2
+shader_parameter/border_mask = 1.0
+shader_parameter/strength = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6gs34"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lboap"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efqqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2uf5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sptuk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxdu7"]
+
+[sub_resource type="Animation" id="Animation_ucykk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SpotLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.284489, -1.22697, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_ap7fv"]
+resource_name = "Spotlight_anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SpotLight3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 6.03333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.284489, -1.22697, 1.5708), Vector3(0.284489, -3.13461, 1.5708), Vector3(0.284489, -2.90946, 1.5708), Vector3(0.284489, -4.37554, 1.5708), Vector3(0.284489, -1.22697, 1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8l35"]
+_data = {
+"RESET": SubResource("Animation_ucykk"),
+"Spotlight_anim": SubResource("Animation_ap7fv")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_qvijo")
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Gabriel" parent="Background" instance=ExtResource("2_f5ub3")]
+transform = Transform3D(0.958676, 0, -0.284501, 0, 1, 0, 0.284501, 0, 0.958676, 0, 0, 0)
+script = null
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.587104, 1.07488, -1.55829)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
+environment = SubResource("Environment_e1868")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.0585, -0.685384)
+visible = false
+
+[node name="Room" type="Node3D" parent="Background"]
+transform = Transform3D(0.900835, 0, 0.434162, 0, 1, 0, -0.434162, 0, 0.900835, 0, 0, 0)
+
+[node name="backwall" type="Node3D" parent="Background/Room"]
+transform = Transform3D(-2.5134e-08, 0, 0.575, 0, 0.575, 0, -0.575, 0, -2.5134e-08, 0, 0, -10.5561)
+
+[node name="SciFi Assets7" parent="Background/Room/backwall" instance=ExtResource("3_ubiml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -10)
+
+[node name="SciFi Assets8" parent="Background/Room/backwall" instance=ExtResource("3_ubiml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 4, -10)
+
+[node name="SciFi Assets" parent="Background/Room/backwall" instance=ExtResource("4_h1sqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="SciFi Assets2" parent="Background/Room/backwall" instance=ExtResource("4_h1sqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 0, -10)
+
+[node name="SciFi Assets3" parent="Background/Room/backwall" instance=ExtResource("4_h1sqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="SciFi Assets4" parent="Background/Room/backwall" instance=ExtResource("4_h1sqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 0, 10)
+
+[node name="SciFi Assets5" parent="Background/Room/backwall" instance=ExtResource("4_h1sqy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 0, -8)
+
+[node name="SciFi Assets6" parent="Background/Room/backwall" instance=ExtResource("4_h1sqy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 0, 8)
+
+[node name="SciFi Assets9" parent="Background/Room/backwall" instance=ExtResource("3_ubiml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 10)
+
+[node name="SciFi Assets10" parent="Background/Room/backwall" instance=ExtResource("3_ubiml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 4, 10)
+
+[node name="SciFi Assets11" parent="Background/Room/backwall" instance=ExtResource("3_ubiml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 4, 8)
+
+[node name="SciFi Assets12" parent="Background/Room/backwall" instance=ExtResource("3_ubiml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 4, -8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Background/Room/backwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -16, 3.996, 9.914)
+use_collision = true
+size = Vector3(4, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_eokqy")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Background/Room/backwall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.76061, 0, -1, 0, -4.37114e-08, -21.9176, 3.996, 1.78446e-07)
+use_collision = true
+size = Vector3(12, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_eokqy")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Background/Room/backwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -16, 3.996, -9.914)
+use_collision = true
+size = Vector3(4, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_eokqy")
+
+[node name="floor" type="Node3D" parent="Background/Room"]
+transform = Transform3D(-2.5134e-08, 0, 0.575, 0, 0.575, 0, -0.575, 0, -2.5134e-08, 9.76526, 0, -2.73534)
+
+[node name="middle" type="Node3D" parent="Background/Room/floor"]
+
+[node name="SciFi Assets2" parent="Background/Room/floor/middle" instance=ExtResource("4_nxkqj")]
+
+[node name="SciFi Assets3" parent="Background/Room/floor/middle" instance=ExtResource("5_5eylw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="SciFi Assets4" parent="Background/Room/floor/middle" instance=ExtResource("5_5eylw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -4)
+
+[node name="SciFi Assets5" parent="Background/Room/floor/middle" instance=ExtResource("5_5eylw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, -4)
+
+[node name="SciFi Assets6" parent="Background/Room/floor/middle" instance=ExtResource("5_5eylw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 4)
+
+[node name="SciFi Assets" parent="Background/Room/floor/middle" instance=ExtResource("6_yaayd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="SciFi Assets7" parent="Background/Room/floor/middle" instance=ExtResource("6_yaayd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="SciFi Assets8" parent="Background/Room/floor/middle" instance=ExtResource("6_yaayd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 0)
+
+[node name="SciFi Assets9" parent="Background/Room/floor/middle" instance=ExtResource("6_yaayd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0)
+
+[node name="middlefrompathfront" type="Node3D" parent="Background/Room/floor"]
+
+[node name="SciFi Assets9" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("7_q05di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29795, 0.0113342, -6.28657)
+
+[node name="SciFi Assets10" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("7_q05di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.298, 0.011, -6.287)
+
+[node name="SciFi Assets3" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="SciFi Assets2" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="SciFi Assets4" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="SciFi Assets6" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="SciFi Assets14" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
+
+[node name="SciFi Assets15" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="SciFi Assets16" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+
+[node name="SciFi Assets18" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="SciFi Assets20" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24)
+
+[node name="SciFi Assets21" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="SciFi Assets22" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24)
+
+[node name="SciFi Assets19" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("8_tof8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="SciFi Assets" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("9_0qdlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="SciFi Assets5" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("9_0qdlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="SciFi Assets7" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("9_0qdlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
+
+[node name="SciFi Assets8" parent="Background/Room/floor/middlefrompathfront" instance=ExtResource("9_0qdlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
+
+[node name="metalcirclefront" type="Node3D" parent="Background/Room/floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SciFi Assets" parent="Background/Room/floor/metalcirclefront" instance=ExtResource("12_ppf6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="SciFi Assets2" parent="Background/Room/floor/metalcirclefront" instance=ExtResource("12_ppf6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8)
+
+[node name="SciFi Assets3" parent="Background/Room/floor/metalcirclefront" instance=ExtResource("12_ppf6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8)
+
+[node name="SciFi Assets4" parent="Background/Room/floor/metalcirclefront" instance=ExtResource("12_ppf6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="SciFi Assets5" parent="Background/Room/floor/metalcirclefront" instance=ExtResource("12_ppf6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="SciFi Assets6" parent="Background/Room/floor/metalcirclefront" instance=ExtResource("12_ppf6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
+
+[node name="metalfillin" type="Node3D" parent="Background/Room/floor"]
+
+[node name="SciFi Assets2" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 8)
+
+[node name="SciFi Assets3" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -8)
+
+[node name="SciFi Assets4" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="SciFi Assets5" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="SciFi Assets6" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8)
+
+[node name="SciFi Assets7" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
+
+[node name="SciFi Assets8" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -24)
+
+[node name="SciFi Assets9" parent="Background/Room/floor/metalfillin" instance=ExtResource("4_nxkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -24)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Background/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30273, 5.05709, 0.417297)
+size = Vector3(11.3145, 1, 8.02405)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37238, 3.44122, 0)
+shadow_enabled = true
+script = ExtResource("12_scjkx")
+noise = SubResource("NoiseTexture3D_nsl8g")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Background"]
+transform = Transform3D(-0.264241, -0.337091, -0.903629, 0.959805, -3.47449e-06, -0.280667, 0.0946072, -0.941472, 0.323543, -0.0575701, 0.847352, -1.91766)
+light_color = Color(0.827451, 0.737255, 0.639216, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+spot_range = 40.0
+spot_angle = 50.0
+spot_angle_attenuation = 2.82843
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="horror_shader" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_gy1gx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(16.1797, 9.49219)
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 160
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_naqun")
+theme_override_font_sizes/font_size = 76
+text = "Drown to Depth"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="StartBT" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0.938388, 0.277931, 0.266592, 1)
+theme_override_colors/font_pressed_color = Color(0.659593, 0.139872, 0.141614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_naqun")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6gs34")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lboap")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_efqqh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j2uf5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sptuk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bxdu7")
+text = "Play"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="SettingBT" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0.938388, 0.277931, 0.266592, 1)
+theme_override_colors/font_pressed_color = Color(0.659593, 0.139872, 0.141614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_naqun")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6gs34")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lboap")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_efqqh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j2uf5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sptuk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bxdu7")
+text = "Settings"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+
+[node name="ExitBT" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0.938388, 0.277931, 0.266592, 1)
+theme_override_colors/font_pressed_color = Color(0.659593, 0.139872, 0.141614, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_naqun")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6gs34")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lboap")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_efqqh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j2uf5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sptuk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bxdu7")
+text = "Exit"
+
+[node name="AnimationMainMenu" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h8l35")
+}
+autoplay = "Spotlight_anim"
+
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/StartBT" to="." method="_on_start_bt_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MarginContainer/VBoxContainer/StartBT" to="." method="_on_start_bt_mouse_exited"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartBT" to="." method="_on_start_bt_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/ExitBT" to="." method="_on_exit_bt_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MarginContainer/VBoxContainer/ExitBT" to="." method="_on_exit_bt_mouse_exited"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/ExitBT" to="." method="_on_exit_bt_pressed"]

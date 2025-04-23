@@ -1,0 +1,772 @@
+[gd_scene load_steps=34 format=3 uid="uid://b1r7hr8l6k1mi"]
+
+[ext_resource type="PackedScene" uid="uid://knypwuted21" path="res://scene/door.tscn" id="2_fvyan"]
+[ext_resource type="PackedScene" uid="uid://cfb1gy1tsnxs3" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Metal_Square.glb" id="2_g1qat"]
+[ext_resource type="PackedScene" uid="uid://s84yp5mo3kh5" path="res://scene/player.tscn" id="2_hv268"]
+[ext_resource type="PackedScene" uid="uid://bs0bsldckkad" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Tile_Metal.glb" id="3_nrfyj"]
+[ext_resource type="PackedScene" uid="uid://m13iiqfh46u8" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Mid_Path_Corner_2.glb" id="3_p45yr"]
+[ext_resource type="PackedScene" uid="uid://buh0583j28jvq" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Mid_Path.glb" id="4_qi8b1"]
+[ext_resource type="PackedScene" uid="uid://cx4bwiiahxjrd" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Metal_Square_Grate.glb" id="6_kxuor"]
+[ext_resource type="PackedScene" uid="uid://d1lmphj8q76mq" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/BioMonitor_Blue.glb" id="7_gjhsr"]
+[ext_resource type="PackedScene" uid="uid://mvdiio1i5s7" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Railing_Ramp.glb" id="9_4xrwf"]
+[ext_resource type="PackedScene" uid="uid://lyvjld6xdj0e" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Ramp_Grey.glb" id="9_yb1q7"]
+[ext_resource type="PackedScene" uid="uid://b3ftq7q830uot" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Metal_Circles.glb" id="11_ecrtp"]
+[ext_resource type="PackedScene" uid="uid://dtuxy3nn8w2fy" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Floor_Medbay_Large.glb" id="12_0vmpw"]
+[ext_resource type="PackedScene" uid="uid://d07wiv60fys47" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Wall_Grey.glb" id="13_bbxhs"]
+[ext_resource type="PackedScene" uid="uid://bd5267w2q86ic" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Wall_Grey_2nd_Floor.glb" id="14_qlcaw"]
+[ext_resource type="PackedScene" uid="uid://ccrpnskfq768n" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Hydroponics_Full.glb" id="15_40tgq"]
+[ext_resource type="PackedScene" uid="uid://c0uqsc5ecas7i" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Large_Monitor_Blue.glb" id="16_yenv1"]
+[ext_resource type="PackedScene" uid="uid://7h31nfdqpsgu" path="res://asset/Item/FixItem/gift_box.tscn" id="17_qnw1v"]
+[ext_resource type="PackedScene" uid="uid://c8etc4f6pq8v" path="res://asset/Item/FixItem/helmet.tscn" id="18_3ov82"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7pqm0"]
+sky_top_color = Color(0.261415, 0.245665, 0.268988, 1)
+sky_horizon_color = Color(0.140096, 0.144502, 0.151457, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_sikt1"]
+sky_material = SubResource("ProceduralSkyMaterial_7pqm0")
+
+[sub_resource type="Environment" id="Environment_bx5ga"]
+background_mode = 2
+sky = SubResource("Sky_sikt1")
+tonemap_mode = 3
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8re1"]
+size = Vector3(16, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2x1or"]
+size = Vector3(20, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cf5ss"]
+size = Vector3(12, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owmna"]
+size = Vector3(9.00659, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhrld"]
+size = Vector3(20, 0.5, 48)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bayfl"]
+size = Vector3(16, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjq7m"]
+size = Vector3(8, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x7e4"]
+size = Vector3(4, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h20d1"]
+size = Vector3(8, 0.5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0v1ym"]
+size = Vector3(12, 1, 7.89795)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6umj"]
+size = Vector3(12, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxyyk"]
+albedo_color = Color(0.36, 0.36, 0.36, 1)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bx5ga")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.0585, -0.685384)
+visible = false
+
+[node name="player" parent="." instance=ExtResource("2_hv268")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718, 0)
+
+[node name="Door" parent="." instance=ExtResource("2_fvyan")]
+transform = Transform3D(-1.48, 0, 2.23474e-07, 0, 1.48, 0, -2.23474e-07, 0, -1.48, -0.114441, 0.0113339, -25.838)
+
+[node name="floor" type="Node3D" parent="."]
+
+[node name="midback" type="Node3D" parent="floor"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.00797808, -0.0157921, 11.9906)
+
+[node name="SciFi Assets" parent="floor/midback" instance=ExtResource("12_0vmpw")]
+
+[node name="SciFi Assets3" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.33865, 0.0105281, 0.00626659)
+
+[node name="SciFi Assets2" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.33865, 0.0105281, -2.6604)
+
+[node name="SciFi Assets4" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.33865, 0.0105281, 2.67293)
+
+[node name="SciFi Assets5" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.33865, 0.0105281, 5.3396)
+
+[node name="SciFi Assets6" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 5.32801, 0.0105281, 0.00626659)
+
+[node name="SciFi Assets7" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 5.32801, 0.0105281, -2.6604)
+
+[node name="SciFi Assets8" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 5.32801, 0.0105281, 2.67293)
+
+[node name="SciFi Assets9" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 5.32801, 0.0105281, 5.3396)
+
+[node name="SciFi Assets10" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 2.66135, 0.0105281, 5.3396)
+
+[node name="SciFi Assets11" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.00531872, 0.0105281, 5.3396)
+
+[node name="SciFi Assets12" parent="floor/midback" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -2.67199, 0.0105281, 5.3396)
+
+[node name="middle" type="Node3D" parent="floor"]
+
+[node name="SciFi Assets2" parent="floor/middle" instance=ExtResource("3_nrfyj")]
+
+[node name="SciFi Assets3" parent="floor/middle" instance=ExtResource("3_p45yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="SciFi Assets4" parent="floor/middle" instance=ExtResource("3_p45yr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -4)
+
+[node name="SciFi Assets5" parent="floor/middle" instance=ExtResource("3_p45yr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, -4)
+
+[node name="SciFi Assets6" parent="floor/middle" instance=ExtResource("3_p45yr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 4)
+
+[node name="SciFi Assets" parent="floor/middle" instance=ExtResource("4_qi8b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="SciFi Assets7" parent="floor/middle" instance=ExtResource("4_qi8b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="SciFi Assets8" parent="floor/middle" instance=ExtResource("4_qi8b1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 0)
+
+[node name="SciFi Assets9" parent="floor/middle" instance=ExtResource("4_qi8b1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0)
+
+[node name="middlefrompathfront" type="Node3D" parent="floor"]
+
+[node name="SciFi Assets9" parent="floor/middlefrompathfront" instance=ExtResource("7_gjhsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29795, 0.0113342, -6.28657)
+
+[node name="SciFi Assets10" parent="floor/middlefrompathfront" instance=ExtResource("7_gjhsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.298, 0.011, -6.287)
+
+[node name="SciFi Assets3" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="SciFi Assets2" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="SciFi Assets6" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="SciFi Assets14" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
+
+[node name="SciFi Assets15" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="SciFi Assets16" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+
+[node name="SciFi Assets18" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="SciFi Assets20" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24)
+
+[node name="SciFi Assets21" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="SciFi Assets22" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24)
+
+[node name="SciFi Assets19" parent="floor/middlefrompathfront" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="SciFi Assets" parent="floor/middlefrompathfront" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="SciFi Assets5" parent="floor/middlefrompathfront" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="SciFi Assets7" parent="floor/middlefrompathfront" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
+
+[node name="SciFi Assets8" parent="floor/middlefrompathfront" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
+
+[node name="middlefrompathleft" type="Node3D" parent="floor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SciFi Assets3" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="SciFi Assets2" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="SciFi Assets6" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="SciFi Assets14" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
+
+[node name="SciFi Assets15" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="SciFi Assets16" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+
+[node name="SciFi Assets18" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="SciFi Assets20" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24)
+
+[node name="SciFi Assets21" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="SciFi Assets22" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24)
+
+[node name="SciFi Assets19" parent="floor/middlefrompathleft" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="SciFi Assets" parent="floor/middlefrompathleft" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="SciFi Assets5" parent="floor/middlefrompathleft" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="SciFi Assets7" parent="floor/middlefrompathleft" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
+
+[node name="SciFi Assets8" parent="floor/middlefrompathleft" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
+
+[node name="middlefrompathright" type="Node3D" parent="floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SciFi Assets3" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="SciFi Assets2" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="SciFi Assets6" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="SciFi Assets14" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
+
+[node name="SciFi Assets16" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+
+[node name="SciFi Assets20" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24)
+
+[node name="SciFi Assets21" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="SciFi Assets22" parent="floor/middlefrompathright" instance=ExtResource("2_g1qat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24)
+
+[node name="SciFi Assets" parent="floor/middlefrompathright" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="SciFi Assets5" parent="floor/middlefrompathright" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="SciFi Assets7" parent="floor/middlefrompathright" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
+
+[node name="SciFi Assets8" parent="floor/middlefrompathright" instance=ExtResource("6_kxuor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
+
+[node name="ramp" type="Node3D" parent="floor"]
+transform = Transform3D(-4.37114e-08, -0.34202, 0.939693, 0, 0.939693, 0.34202, -1, 1.49502e-08, -4.10753e-08, 17.271, -3.08898, -2)
+
+[node name="SciFi Assets2" parent="floor/ramp" instance=ExtResource("9_yb1q7")]
+transform = Transform3D(1, 1.77636e-15, -3.55271e-15, 0, 1, -6.14082e-16, -3.55271e-15, -6.14082e-16, 1, 0, 0, 0)
+
+[node name="SciFi Assets" parent="floor/ramp" instance=ExtResource("9_yb1q7")]
+transform = Transform3D(1, 1.77636e-15, -3.55271e-15, 0, 1, -6.14082e-16, -3.55271e-15, -6.14082e-16, 1, -2, 0.000337601, 0.000492096)
+
+[node name="SciFi Assets3" parent="floor/ramp" instance=ExtResource("9_yb1q7")]
+transform = Transform3D(1, 1.77636e-15, -3.55271e-15, 0, 1, -6.14082e-16, -3.55271e-15, -6.14082e-16, 1, -4, 0, 0)
+
+[node name="SciFi Assets4" parent="floor/ramp" instance=ExtResource("9_yb1q7")]
+transform = Transform3D(1, 1.77636e-15, -3.55271e-15, 0, 1, -6.14082e-16, -3.55271e-15, -6.14082e-16, 1, -2.38419e-07, -3.86887, 3.87275)
+
+[node name="SciFi Assets5" parent="floor/ramp" instance=ExtResource("9_yb1q7")]
+transform = Transform3D(1, 1.77636e-15, -3.55271e-15, 0, 1, -6.14082e-16, -3.55271e-15, -6.14082e-16, 1, -2, -3.86853, 3.87324)
+
+[node name="SciFi Assets6" parent="floor/ramp" instance=ExtResource("9_yb1q7")]
+transform = Transform3D(1, 1.77636e-15, -3.55271e-15, 0, 1, -6.14082e-16, -3.55271e-15, -6.14082e-16, 1, -4, -3.86887, 3.87275)
+
+[node name="SciFi Assets8" parent="floor/ramp" instance=ExtResource("9_4xrwf")]
+transform = Transform3D(1, 2.4869e-14, -8.88178e-14, -5.32907e-15, 1, 2.98023e-07, -3.19744e-14, -2.98023e-07, 1, -5.808, -2.16307, 2.15371)
+
+[node name="SciFi Assets7" parent="floor/ramp" instance=ExtResource("9_4xrwf")]
+transform = Transform3D(1, 2.30926e-14, -7.81597e-14, -5.32907e-15, 1, 2.38419e-07, -3.19744e-14, -2.38419e-07, 1, 1.90432, -2.16311, 2.15392)
+
+[node name="SciFi Assets9" parent="floor/ramp" instance=ExtResource("9_4xrwf")]
+transform = Transform3D(1, 2.4869e-14, -1.10134e-13, -5.32907e-15, 1, 2.98023e-07, -3.19744e-14, -2.98023e-07, 1, -5.808, -5.24231, 5.23783)
+
+[node name="SciFi Assets10" parent="floor/ramp" instance=ExtResource("9_4xrwf")]
+transform = Transform3D(1, 2.4869e-14, -9.9476e-14, -5.32907e-15, 1, 2.98023e-07, -3.19744e-14, -2.98023e-07, 1, 1.90432, -5.24235, 5.23803)
+
+[node name="metalcircleleft" type="Node3D" parent="floor"]
+
+[node name="SciFi Assets" parent="floor/metalcircleleft" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="SciFi Assets2" parent="floor/metalcircleleft" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8)
+
+[node name="SciFi Assets3" parent="floor/metalcircleleft" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/metalcircleleft" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="SciFi Assets5" parent="floor/metalcircleleft" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="SciFi Assets6" parent="floor/metalcircleleft" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
+
+[node name="metalcircleright" type="Node3D" parent="floor"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="SciFi Assets" parent="floor/metalcircleright" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="SciFi Assets2" parent="floor/metalcircleright" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8)
+
+[node name="SciFi Assets3" parent="floor/metalcircleright" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/metalcircleright" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="SciFi Assets5" parent="floor/metalcircleright" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="SciFi Assets6" parent="floor/metalcircleright" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
+
+[node name="metalcirclefront" type="Node3D" parent="floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SciFi Assets" parent="floor/metalcirclefront" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="SciFi Assets2" parent="floor/metalcirclefront" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8)
+
+[node name="SciFi Assets3" parent="floor/metalcirclefront" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/metalcirclefront" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="SciFi Assets5" parent="floor/metalcirclefront" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="SciFi Assets6" parent="floor/metalcirclefront" instance=ExtResource("11_ecrtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
+
+[node name="metalfillin" type="Node3D" parent="floor"]
+
+[node name="SciFi Assets2" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 8)
+
+[node name="SciFi Assets3" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -8)
+
+[node name="SciFi Assets4" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="SciFi Assets5" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="SciFi Assets6" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8)
+
+[node name="SciFi Assets7" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
+
+[node name="SciFi Assets8" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -24)
+
+[node name="SciFi Assets9" parent="floor/metalfillin" instance=ExtResource("3_nrfyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -24)
+
+[node name="WallCollision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 4, 10)
+shape = SubResource("BoxShape3D_w8re1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 4, -10)
+shape = SubResource("BoxShape3D_w8re1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, 10)
+shape = SubResource("BoxShape3D_w8re1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -10)
+shape = SubResource("BoxShape3D_w8re1")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, 0)
+shape = SubResource("BoxShape3D_2x1or")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26, 4, 0)
+shape = SubResource("BoxShape3D_2x1or")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 22)
+shape = SubResource("BoxShape3D_2x1or")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 4, 16)
+shape = SubResource("BoxShape3D_cf5ss")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 4, 16)
+shape = SubResource("BoxShape3D_cf5ss")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 4, -18)
+shape = SubResource("BoxShape3D_w8re1")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 4, -18)
+shape = SubResource("BoxShape3D_w8re1")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65467, 4, -26)
+shape = SubResource("BoxShape3D_owmna")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="WallCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4967, 4, -26)
+shape = SubResource("BoxShape3D_owmna")
+
+[node name="FloorCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245, -1.993)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorCollision"]
+shape = SubResource("BoxShape3D_bhrld")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 2)
+shape = SubResource("BoxShape3D_bayfl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="FloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+shape = SubResource("BoxShape3D_kjq7m")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 2)
+shape = SubResource("BoxShape3D_8x7e4")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="FloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 8)
+shape = SubResource("BoxShape3D_h20d1")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="FloorCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -4)
+shape = SubResource("BoxShape3D_h20d1")
+
+[node name="RampCollision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="RampCollision"]
+transform = Transform3D(0.907902, 0.419183, 0, -0.419183, 0.907902, 0, 0, 0, 1, 19.2526, -2.95319, -0.00370407)
+shape = SubResource("BoxShape3D_0v1ym")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="RampCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2526, -2.48269, 4.17552)
+shape = SubResource("BoxShape3D_c6umj")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="RampCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.253, -2.483, -4.176)
+shape = SubResource("BoxShape3D_c6umj")
+
+[node name="leftwall" type="Node3D" parent="."]
+
+[node name="SciFi Assets7" parent="leftwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -10)
+
+[node name="SciFi Assets8" parent="leftwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, -10)
+
+[node name="SciFi Assets" parent="leftwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="SciFi Assets2" parent="leftwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -10)
+
+[node name="SciFi Assets3" parent="leftwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="SciFi Assets4" parent="leftwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 10)
+
+[node name="SciFi Assets5" parent="leftwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, -8)
+
+[node name="SciFi Assets6" parent="leftwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, 8)
+
+[node name="SciFi Assets9" parent="leftwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 10)
+
+[node name="SciFi Assets10" parent="leftwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, 10)
+
+[node name="SciFi Assets11" parent="leftwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, 8)
+
+[node name="SciFi Assets12" parent="leftwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, -8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="leftwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -17.931, 3.99588, 9.914)
+use_collision = true
+size = Vector3(8, 2.89746, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="leftwall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.76061, 0, -1, 0, -4.37114e-08, -26, 3.996, 0)
+use_collision = true
+size = Vector3(12, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="leftwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -17.931, 3.996, -9.914)
+use_collision = true
+size = Vector3(8, 2.89746, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="rightwall" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="SciFi Assets7" parent="rightwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -10)
+
+[node name="SciFi Assets8" parent="rightwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, -10)
+
+[node name="SciFi Assets" parent="rightwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="SciFi Assets2" parent="rightwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -10)
+
+[node name="SciFi Assets3" parent="rightwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="SciFi Assets4" parent="rightwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 10)
+
+[node name="SciFi Assets5" parent="rightwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, -8)
+
+[node name="SciFi Assets6" parent="rightwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, 8)
+
+[node name="SciFi Assets9" parent="rightwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 10)
+
+[node name="SciFi Assets10" parent="rightwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, 10)
+
+[node name="SciFi Assets11" parent="rightwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, 8)
+
+[node name="SciFi Assets12" parent="rightwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, -8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="rightwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -18, 3.996, 9.914)
+use_collision = true
+size = Vector3(8, 2.89746, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="rightwall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.76061, 0, -1, 0, -4.37114e-08, -26, 3.996, 0)
+use_collision = true
+size = Vector3(12, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="rightwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -18, 3.996, -9.914)
+use_collision = true
+size = Vector3(8, 2.89746, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="backwall" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SciFi Assets7" parent="backwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -10)
+
+[node name="SciFi Assets8" parent="backwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 4, -10)
+
+[node name="SciFi Assets" parent="backwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="SciFi Assets2" parent="backwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 0, -10)
+
+[node name="SciFi Assets3" parent="backwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="SciFi Assets4" parent="backwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 0, 10)
+
+[node name="SciFi Assets5" parent="backwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 0, -8)
+
+[node name="SciFi Assets6" parent="backwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 0, 8)
+
+[node name="SciFi Assets9" parent="backwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 10)
+
+[node name="SciFi Assets10" parent="backwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9176, 4, 10)
+
+[node name="SciFi Assets11" parent="backwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 4, 8)
+
+[node name="SciFi Assets12" parent="backwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.9176, 4, -8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="backwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -16, 3.996, 9.914)
+use_collision = true
+size = Vector3(4, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="backwall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.76061, 0, -1, 0, -4.37114e-08, -21.9176, 3.996, 1.78446e-07)
+use_collision = true
+size = Vector3(12, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="backwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -16, 3.996, -9.914)
+use_collision = true
+size = Vector3(4, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="frontwall" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="SciFi Assets7" parent="frontwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, -10)
+
+[node name="SciFi Assets8" parent="frontwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, -10)
+
+[node name="SciFi Assets" parent="frontwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="SciFi Assets2" parent="frontwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -10)
+
+[node name="SciFi Assets3" parent="frontwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="SciFi Assets4" parent="frontwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 10)
+
+[node name="SciFi Assets5" parent="frontwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, -8)
+
+[node name="SciFi Assets6" parent="frontwall" instance=ExtResource("13_bbxhs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, 8)
+
+[node name="SciFi Assets9" parent="frontwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 10)
+
+[node name="SciFi Assets10" parent="frontwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, 10)
+
+[node name="SciFi Assets11" parent="frontwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, 8)
+
+[node name="SciFi Assets12" parent="frontwall" instance=ExtResource("14_qlcaw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 4, -8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="frontwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -17.931, 3.99588, 9.914)
+use_collision = true
+size = Vector3(8, 2.89746, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="frontwall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.76061, 0, -1, 0, -4.37114e-08, -26, 3.996, 0)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="frontwall/CSGCombiner3D"]
+use_collision = true
+size = Vector3(12, 2.897, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="frontwall/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503974, 0)
+operation = 2
+use_collision = true
+size = Vector3(5.03223, 1.88905, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="frontwall"]
+transform = Transform3D(1, 0, 0, 0, 2.76061, 0, 0, 0, 1, -17.931, 3.996, -9.914)
+use_collision = true
+size = Vector3(8, 2.89746, 0.2)
+material = SubResource("StandardMaterial3D_kxyyk")
+
+[node name="SciFi Assets2" parent="." instance=ExtResource("15_40tgq")]
+transform = Transform3D(-1.14305e-07, 0, 2.615, 0, 2.615, 0, -2.615, 0, -1.14305e-07, 0, -1.84272, 12)
+
+[node name="SciFi Assets" parent="." instance=ExtResource("16_yenv1")]
+transform = Transform3D(-1.46, 0, -2.20454e-07, 0, 1.46, 0, 2.20454e-07, 0, -1.46, 0.00290871, 0.0153287, 12.8993)
+
+[node name="GiftBox" parent="." instance=ExtResource("17_qnw1v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.840791, 0.0153287, 8.35462)
+
+[node name="GiftBox2" parent="." instance=ExtResource("17_qnw1v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.34083, 0.0153286, 8.69809)
+
+[node name="Helm" parent="." instance=ExtResource("18_3ov82")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.17692, 0.606175, 9.4764)

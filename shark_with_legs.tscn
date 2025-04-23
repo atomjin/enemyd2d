@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://lpw2s3isy3e5"]
+
+[ext_resource type="PackedScene" uid="uid://bpo8p208v1ret" path="res://asset/scap/ItchIoPack/SharkWithLegs.fbx" id="1_6hlws"]
+
+[node name="SharkWithLegs" instance=ExtResource("1_6hlws")]
+
+[node name="Eyes" parent="Shark_Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, -8.63233e-08, -1.74387e-08, 8.63224e-08, 1, -5.96046e-08, 1.74423e-08, 2.38419e-07, 1, -7.41834e-11, -0.0276719, 0.00646536)
+bone_idx = 7

@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ci45u1l6g8xg4"
+valid=false
+
+[deps]
+
+source_file="res://donation_receive.csv"
+
+[params]
+
+compress=true
+delimiter=0

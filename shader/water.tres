@@ -1,0 +1,54 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://8vp4q24pjhi2"]
+
+[ext_resource type="Shader" path="res://shader/water.gdshader" id="1_usyga"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6803a"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdubw"]
+seamless = true
+as_normal_map = true
+bump_strength = 5.0
+noise = SubResource("FastNoiseLite_6803a")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fhopt"]
+noise_type = 3
+seed = 10
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmwui"]
+seamless = true
+as_normal_map = true
+bump_strength = 5.0
+noise = SubResource("FastNoiseLite_fhopt")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3tfgh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2eoed"]
+seamless = true
+noise = SubResource("FastNoiseLite_3tfgh")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_usyga")
+shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
+shader_parameter/albedo2 = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 20.0
+shader_parameter/height_scale = 0.245
+shader_parameter/color_deep = null
+shader_parameter/color_shallow = Color(0.183079, 0.294721, 0.389821, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_pdubw")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_vmwui")
+shader_parameter/wave = SubResource("NoiseTexture2D_2eoed")

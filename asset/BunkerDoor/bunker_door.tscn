@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1ipct74xub5u"]
+
+[ext_resource type="PackedScene" uid="uid://cjoh0dx2m4nis" path="res://asset/BunkerDoor/BunkerDoor.fbx" id="1_5tcj3"]
+[ext_resource type="Script" path="res://script/door.gd" id="2_djbyy"]
+[ext_resource type="Texture2D" uid="uid://urk274alwt4q" path="res://asset/BunkerDoor/Tex_BunkerDoor.png" id="2_nu2dy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3y82g"]
+points = PackedVector3Array(-0.00254688, 0.0045, -0.00217896, 0.0101397, 0.00183149, 0.0204683, 0.00947846, 0.00249129, 0.0204683, -0.00966894, -0.00146965, 0.0211302, 0.00860813, -0.0018, -0.0192092, -0.00939971, -0.0018, -0.0186075, 0.0101397, 0.00249129, -0.0204683, -0.00966894, 0.00249129, -0.0204683, 0.00920924, -0.0018, 0.0186075, -0.00966894, 0.00249129, 0.0204683, 0.00538897, 0.0041, 0.0150167, 0.00538897, 0.0041, -0.0150167, -0.0055812, 0.0041, 0.0150167, -0.0055812, 0.0041, -0.0150167, -0.0103302, 0.00183149, -0.0204683, -0.00939971, -0.0018, 0.0186075, 0.00920924, -0.0018, -0.0186075, 0.00920048, -0.00138337, 0.0205166, -0.00966894, 0.00183149, -0.0211302, -0.0103302, 0.00183149, 0.0204683, 0.00947846, 0.00183149, 0.0211302, 0.00235475, 0.0045, 0.00436133, 0.00947846, 0.00183149, -0.0211302, -0.00966894, 0.00183149, 0.0211302, -0.0087986, -0.0018, -0.0192092, 0.00235475, 0.0045, -0.00217896, -0.00254688, 0.0045, 0.00436133, 0.0101397, 0.00249129, -0.0138662)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1anh"]
+normal_enabled = true
+normal_texture = ExtResource("2_nu2dy")
+
+[sub_resource type="Animation" id="Animation_pmokc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8iioa"]
+resource_name = "open_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -4.29007, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -4.29, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0tnu"]
+_data = {
+"RESET": SubResource("Animation_pmokc"),
+"open_door": SubResource("Animation_8iioa")
+}
+
+[node name="BunkerDoor" instance=ExtResource("1_5tcj3")]
+script = ExtResource("2_djbyy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_3y82g")
+
+[node name="Cube" parent="." index="1"]
+transform = Transform3D(-100, 8.74228e-06, 3.82137e-13, 0, -4.37114e-06, 100, 8.74228e-06, 100, 4.37114e-06, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_i1anh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_x0tnu")
+}

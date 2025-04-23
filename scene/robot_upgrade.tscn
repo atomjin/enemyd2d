@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjopy2d1t6wf5"]
+
+[ext_resource type="PackedScene" uid="uid://bua1x42eigupg" path="res://asset/Robot.fbx" id="1_pmwxf"]
+[ext_resource type="Script" path="res://script/upgrade/robot_upgrade.gd" id="2_1m1q3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlb5g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq2eo"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
+[node name="Robot" instance=ExtResource("1_pmwxf")]
+script = ExtResource("2_1m1q3")
+
+[node name="Skeleton3D" parent="metarig_001" index="0"]
+bones/5/rotation = Quaternion(-0.195525, 0.000474975, 0.000474975, 0.980475)
+bones/8/rotation = Quaternion(-0.312525, 0.714475, -0.703525, 0.623475)
+bones/9/rotation = Quaternion(0.181475, 0.406475, -0.040525, 0.982475)
+bones/10/rotation = Quaternion(-0.025525, -0.00352503, -0.218525, 0.999475)
+bones/16/rotation = Quaternion(-0.252525, 1.16848, 0.440475, 0.672475)
+bones/36/rotation = Quaternion(-0.307525, -0.294525, 0.313475, 0.623475)
+bones/37/rotation = Quaternion(0.811475, -2.29153, 1.08547, 0.982475)
+bones/38/rotation = Quaternion(-0.025525, 0.00347497, 0.288475, 0.999475)
+
+[node name="Cube_038" parent="metarig_001/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dlb5g")
+surface_material_override/1 = SubResource("StandardMaterial3D_uq2eo")
