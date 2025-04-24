@@ -103,7 +103,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	#get hit
-	
+
 	var enemy = get_node_or_null(enemy_path)
 	print("Player ready. Trying to connect to:", enemy)
 	if enemy:

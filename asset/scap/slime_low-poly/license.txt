@@ -1,0 +1,11 @@
+Model Information:
+* title:	Slime low-poly
+* source:	https://sketchfab.com/3d-models/slime-low-poly-446d179577354f9794dde57f98943adc
+* author:	Parado10 (https://sketchfab.com/Parado10)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Slime low-poly" (https://sketchfab.com/3d-models/slime-low-poly-446d179577354f9794dde57f98943adc) by Parado10 (https://sketchfab.com/Parado10) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -39,3 +39,4 @@ func on_child_transitioned(state, new_state_name):
 		current_state.exit()
 	
 	new_state.enter()
+	current_state = new_state
