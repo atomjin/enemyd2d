@@ -11,5 +11,5 @@ func exit():
 func process(_delta: float):
 	pass
 	
-func _physics_process(delta: float):
+func physics_process(delta: float):
 	pass

@@ -37,8 +37,16 @@ func _process(delta: float) -> void:
 	wander_time -= delta
 	
 	if enemy.global_position.distance_to(player.global_position)< enemy.ChaseDistance:
-		emit_signal("Tramsitioned",self,"EnemyChase")
+		
+		emit_signal("Transitioned", self, "EnemyChase")
+		
 
 func _physics_process(_delta: float) -> void:
 	enemy.velocity = wander_direction * enemy.walkSpeed
+	
+	# Only rotate if there's movement
+	if wander_direction != Vector3.ZERO:
+		var look_target = enemy.global_position + wander_direction
+		enemy.look_at(look_target, Vector3.UP)
+		enemy.rotate_y(deg_to_rad(180))  # Fix for backward-facing model
 	

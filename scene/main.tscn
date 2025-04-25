@@ -1442,17 +1442,18 @@ libraries = {
 }
 autoplay = "Flashing"
 
-[node name="anglerfish" parent="." instance=ExtResource("52_3x3wq")]
-transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 1.21488, 4.77311)
-collision_mask = 0
-player_path = NodePath("../player")
-
 [node name="scab" parent="." instance=ExtResource("53_b75st")]
-transform = Transform3D(2.99426, 0, 0.185445, 0, 3, 0, -0.185445, 0, 2.99426, -0.042, 0.1, -17.336)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -11.3026)
 collision_mask = 0
-safe_margin = 0.05
 player_path = NodePath("../player")
-attack_range = 2.0
+speed = 1.0
+
+[node name="anglerfish" parent="." instance=ExtResource("52_3x3wq")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 18.7329, 2.94649, 6.05654)
+collision_mask = 0
+RunSpeed = 2.0
+ChaseDistance = 10.0
+player_path = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_hv268")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718, 0)

@@ -26,17 +26,22 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta: float) -> void:
 	if current_state:
-		current_state._physics_process(delta)
+		current_state.physics_process(delta)
 	
 	
 func on_child_transitioned(state, new_state_name):
 	if state != current_state:
 		return
-		
-	var new_state = state[new_state_name.to_lower()]
-	
+
+	var new_state = get_node_or_null(new_state_name)
+	print("Switching to state:", new_state_name)
+
+	if not new_state:
+		push_error("❌ Could not find state: " + str(new_state_name))
+		return
+
 	if current_state:
 		current_state.exit()
-	
+
 	new_state.enter()
 	current_state = new_state

@@ -10,6 +10,7 @@ var animation_playback = AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+
 	animation_playback = animation_tree.get("parameters/playback")
 
 func enter():
@@ -19,7 +20,8 @@ func process(delta: float) -> void:
 	player.healt_component.damage(1.0)
 	
 	if enemy.global_position.direction_to(player.global_position) > enemy.AttackReach:
-		emit_signal("Transitioned",self, "EnemyAttack")
+		emit_signal("Transitioned", self, "EnemyAttack")  # Use the exact node name
+
 		
 		
 func _attack_player():
