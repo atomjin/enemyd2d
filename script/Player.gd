@@ -95,8 +95,14 @@ var lerp_speed = 5.0  # Adjust speed as needed
 #enemy 
 signal player_hit
 var health := 3
-@onready var scab: CharacterBody3D = $"../scab"
+
 @export var enemy_path: NodePath
+var forced_look_target: Node3D = null
+var forcing_look: bool = false
+var can_move: bool = true
+var zooming_in: bool = false
+
+
 
 func _ready():
 	add_to_group("player")
@@ -265,7 +271,7 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
-	if onground == true and not menu_open:
+	if onground == true and not menu_open and can_move:
 		#Oxygen
 		if oxygen_level < 100.0:
 			oxygen_level += oxygen_recharge_rate * delta
@@ -294,6 +300,10 @@ func _physics_process(delta: float) -> void:
 		camera.transform.origin = _headbob(t_bob)
 		
 		move_and_slide()
+	
+	
+	if forcing_look:
+		force_look_at_enemy(delta)
 	
 	if diving == true: 
 		velocity.y = lerp(velocity.y, 0.0, 1 * delta)
@@ -590,6 +600,26 @@ func emit_bubble():
 func _on_player_hit():
 	print("💥 Player got hit by enemy!")
 	health -= 1
+	
+func force_look_at_enemy(delta: float) -> void:
+	if not forced_look_target:
+		return
+	var head_pos = head.global_transform.origin
+	var enemy_pos = forced_look_target.global_transform.origin
+	var to_enemy = (enemy_pos - head_pos).normalized()
+
+	var desired_y = atan2(-to_enemy.x, -to_enemy.z)
+	head.rotation.y = lerp_angle(head.rotation.y, desired_y, delta * 5.0)
+
+	var flat_dist = Vector2(to_enemy.x, to_enemy.z).length()
+	var desired_x = atan2(to_enemy.y, flat_dist)
+	head.rotation.x = lerp_angle(head.rotation.x, -desired_x, delta * 5.0)
+
+	# ✨ Zoom camera during scare
+	if forcing_look:
+		camera.fov = lerp(camera.fov, 40.0, delta * 5.0) # zoom in fast
+	else:
+		camera.fov = lerp(camera.fov, 70.0, delta * 5.0) # normal view
 
 
 

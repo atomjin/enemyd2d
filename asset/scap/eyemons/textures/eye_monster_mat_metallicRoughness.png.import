@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://14e0lob5mmmx"
-path.s3tc="res://.godot/imported/eye_monster_mat_baseColor.png-cc6f7831d6db18c4f9004d9613caeeab.s3tc.ctex"
+uid="uid://cvdjncdeynege"
+path.s3tc="res://.godot/imported/eye_monster_mat_metallicRoughness.png-174edd22182f8c36c442741e0a150713.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/scap/eye monsrt/textures/eye_monster_mat_baseColor.png"
-dest_files=["res://.godot/imported/eye_monster_mat_baseColor.png-cc6f7831d6db18c4f9004d9613caeeab.s3tc.ctex"]
+source_file="res://asset/scap/eyemons/textures/eye_monster_mat_metallicRoughness.png"
+dest_files=["res://.godot/imported/eye_monster_mat_metallicRoughness.png-174edd22182f8c36c442741e0a150713.s3tc.ctex"]
 
 [params]
 

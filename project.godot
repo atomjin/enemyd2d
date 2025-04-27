@@ -43,6 +43,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/mixa
 
 player=""
 itemforsell=""
+enemy=""
 
 [input]
 

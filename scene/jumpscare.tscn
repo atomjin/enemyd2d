@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://chmkuutdlnw5i"]
+
+[ext_resource type="Script" path="res://script/jumpscare.gd" id="1_gp436"]
+[ext_resource type="AudioStream" uid="uid://c36g5irswcgvu" path="res://asset/scap/jumpscare-94984.mp3" id="2_7gddv"]
+
+[node name="Jumpscare" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_gp436")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7gddv")
+
+[node name="Viewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Viewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+fov = 70.0
+
+[node name="Light" type="DirectionalLight3D" parent="Viewport"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)

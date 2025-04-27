@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=4 uid="uid://b1r7hr8l6k1mi"]
+[gd_scene load_steps=189 format=4 uid="uid://b1r7hr8l6k1mi"]
 
 [ext_resource type="Script" path="res://upgrade.gd" id="1_d6q7a"]
 [ext_resource type="Texture2D" uid="uid://dcncwokdtb6ph" path="res://texture/Particle_Trans/circle_05.png" id="1_usafl"]
@@ -91,7 +91,10 @@
 [ext_resource type="PackedScene" uid="uid://r5l3nxcxgqt1" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Air_Con.glb" id="40_v7pi5"]
 [ext_resource type="PackedScene" uid="uid://dxjs4nh51bdhs" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Table_Light.glb" id="41_aksxl"]
 [ext_resource type="Texture2D" uid="uid://8nt247gpfict" path="res://asset/Molten Maps SciFi Asset Pack/Assets/gtlf/Bunk_Double_Blue_Gradient Texture Atlas by Imphenzia.png" id="41_k47pp"]
+[ext_resource type="PackedScene" uid="uid://dcwu2simrh3q2" path="res://scene/anglerfish.tscn" id="52_3x3wq"]
 [ext_resource type="PackedScene" uid="uid://ca1ygcnvcke02" path="res://scene/eyemons.tscn" id="52_g71sk"]
+[ext_resource type="PackedScene" uid="uid://chmkuutdlnw5i" path="res://scene/jumpscare.tscn" id="52_qanub"]
+[ext_resource type="PackedScene" uid="uid://b7x8i0khwn3ud" path="res://scene/scab.tscn" id="53_b75st"]
 [ext_resource type="PackedScene" uid="uid://cjopy2d1t6wf5" path="res://scene/robot_upgrade.tscn" id="67_revwe"]
 [ext_resource type="Script" path="res://script/upgrade/upgrade_area.gd" id="85_glwlb"]
 [ext_resource type="PackedScene" uid="uid://bc5q55loiwbkt" path="res://scene/wall_small.tscn" id="86_28cln"]
@@ -1441,17 +1444,33 @@ libraries = {
 }
 autoplay = "Flashing"
 
+[node name="Jumpscare" parent="." instance=ExtResource("52_qanub")]
+
 [node name="eyemons" parent="." groups=["enemy"] instance=ExtResource("52_g71sk")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.02747, 0, 8.07888)
 collision_mask = 0
-RunSpeed = 2.0
+RunSpeed = 1.0
 AttackReach = 5.0
+player_path = NodePath("../player")
+
+[node name="scab" parent="." groups=["enemy"] instance=ExtResource("53_b75st")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -11.3026)
+collision_mask = 0
+player_path = NodePath("../player")
+speed = 1.0
+
+[node name="anglerfish" parent="." groups=["enemy"] instance=ExtResource("52_3x3wq")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 18.7329, 2.94649, 6.05654)
+collision_mask = 0
+RunSpeed = 2.0
+ChaseDistance = 10.0
 player_path = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_hv268")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718, 0)
 floor_snap_length = 0.1
 safe_margin = 0.05
+enemy_path = null
 
 [node name="BunkerDoor" parent="." instance=ExtResource("3_qg1y0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34713, -25.7741)
